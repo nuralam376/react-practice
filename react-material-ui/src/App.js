@@ -3,6 +3,7 @@ import "./App.css";
 import News from "./components/News/News";
 import Chart from "./components/Charts/Chart";
 import axios from "axios";
+import LikeButton from "./components/LikeButton/LikeButton";
 
 function App() {
 	const [articles, setArticles] = useState([]);
@@ -18,6 +19,7 @@ function App() {
 	}, []);
 	return (
 		<div className="container">
+			<LikeButton></LikeButton>
 			<h1>Charts</h1>
 			<Chart></Chart>
 			<br />
