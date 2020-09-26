@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Country from "../src/components/Country/Country";
 import Population from "./components/Population/Population";
+import Shop from "./components/Shop/Shop";
 
 function App() {
 	const [countries, setCountries] = useState([]);
@@ -21,6 +22,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<Shop />
 			<div className="country">
 				<h1>Total Countries - {countries.length}</h1>
 				<Population newCountries={newCountries}></Population>
