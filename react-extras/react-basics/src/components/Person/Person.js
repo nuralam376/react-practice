@@ -1,15 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Person = (props) => {
-  console.log(props);
-  return (
-    <div>
-      <h3>
-        Person name : {props.name} and Age : {props.age}
-      </h3>
-      <p>Children : {props.children}</p>
-    </div>
-  );
-};
+class Person extends Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.name}</h1>
+        <p>{this.props.age}</p>
+      </div>
+    );
+  }
+}
 
 export default Person;
