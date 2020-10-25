@@ -1,3 +1,34 @@
 .App {
   text-align: center;
 }
+
+.navbar ul {
+  list-style: none;
+}
+
+.navbar ul li {
+  display: inline-block;
+  padding: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+}
+
+.navbar a:active {
+  color: coral;
+}
+
+.navbar a:hover {
+  color: cyan;
+}
+
+.navbar a.active {
+  color: lightcoral;
+}
+
+.Book:hover {
+  cursor: pointer;
+  background-color: tomato;
+  color: white;
+}

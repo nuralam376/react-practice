@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+.text-brand {
+  color: #1cc7c1;
+}
+
+.react-calendar {
+  border: none;
+  width: 90%;
+  margin: 100px auto;
+}
