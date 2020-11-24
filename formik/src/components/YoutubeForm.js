@@ -1,12 +1,20 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import React from "react";
 import * as yup from "yup";
+import TextError from "./TextError";
 
 const initialValues = {
   name: "",
   email: "",
   channel: "",
   comments: "",
+  address: "",
+  social: {
+    facebook: "",
+    twitter: "",
+  },
+  phoneNumbers: ["", ""],
+  phNumbers: [""],
 };
 
 const onSubmit = (values) => {
@@ -14,30 +22,12 @@ const onSubmit = (values) => {
 };
 
 const validationSchema = yup.object({
-  name: yup.string().required("Required!"),
+  name: yup.string().required("Required"),
   email: yup.string().email("Invalid email address").required("Required"),
   channel: yup.string().required("Required"),
+  address: yup.string().required("Required"),
+  comments: yup.string().required("Required"),
 });
-
-const validate = (values) => {
-  let errors = {};
-
-  if (!values.name) {
-    errors.name = "Required";
-  }
-
-  if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9._]+$/.test(values.email)) {
-    errors.email = "Invalid email address";
-  }
-
-  if (!values.channel) {
-    errors.channel = "Required";
-  }
-
-  return errors;
-};
 
 const YoutubeForm = () => {
   return (
@@ -57,7 +47,9 @@ const YoutubeForm = () => {
           <Field type="email" name="email" id="email" />
         </div>
 
-        <ErrorMessage name="email" />
+        <ErrorMessage name="email">
+          {(errorMessage) => <div className="error">{errorMessage}</div>}
+        </ErrorMessage>
 
         <div className="form-control">
           <label htmlFor="channel">Channel</label>
@@ -73,24 +65,69 @@ const YoutubeForm = () => {
         <div className="form-control">
           <label htmlFor="comments">Comments</label>
           <Field as="textarea" name="comments" id="comments" />
-          <ErrorMessage name="comments" />
+          <ErrorMessage name="comments" component={TextError} />
         </div>
         <div className="form-control">
           <label htmlFor="address">Address</label>
           <Field name="address">
             {(props) => {
-              const { field, form, meta } = props;
+              const { field, meta } = props;
 
               return (
                 <div>
-                  <input type="text" id="address" {...field} />
-                  {meta.touched && meta.error && <div>{meta.error}</div>}
+                  <input type="text" {...field} />
+                  {meta.touched && meta.error ? (
+                    <div className="error">{meta.error}</div>
+                  ) : null}
                 </div>
               );
             }}
           </Field>
         </div>
 
+        <div className="form-control">
+          <label htmlFor="facebook">Facebook Profile</label>
+          <Field name="social.facebook" id="facebook" type="text" />
+        </div>
+        <div className="form-control">
+          <label htmlFor="twitter">Twitter</label>
+          <Field name="social.twitter" id="twitter" type="text" />
+        </div>
+        <div className="form-controller">
+          <label htmlFor="primary">Primary Phone Number</label>
+          <Field type="text" name="phoneNumbers[0]" id="primary" />
+        </div>
+        <div className="form-control">
+          <label htmlFor="secondary">Secondary Phone Number</label>
+          <Field type="text" name="phoneNumbers[1]" id="secondary" />
+        </div>
+        <div className="form-control">
+          <label htmlFor="phNumbers">List if Phone Numbers</label>
+          <FieldArray name="phNumbers">
+            {(fieldArray) => {
+              const { push, remove, form } = fieldArray;
+              const { values } = form;
+              const { phNumbers } = values;
+              return (
+                <div>
+                  {phNumbers.map((phNumber, index) => (
+                    <div key={index}>
+                      <Field name={`phNumbers[${index}]`} />
+                      {index > 0 && (
+                        <button type="button" onClick={() => remove(index)}>
+                          -
+                        </button>
+                      )}
+                      <button type="button" onClick={() => push(index)}>
+                        +
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              );
+            }}
+          </FieldArray>
+        </div>
         <button type="submit">Submit</button>
       </Form>
     </Formik>
