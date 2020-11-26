@@ -2,7 +2,6 @@ import { makeStyles, Paper } from "@material-ui/core";
 import { PeopleOutlineTwoTone } from "@material-ui/icons";
 import React from "react";
 import PageHeader from "../../components/PageHeader";
-import EmployeeForm from "./EmployeeForm";
 import Employees from "./Employees";
 
 const useStyle = makeStyles((theme) => ({
@@ -23,7 +22,6 @@ const Employee = () => {
         icon={<PeopleOutlineTwoTone fontSize="large" />}
       />
       <Paper className={classes.pageContent}>
-        <EmployeeForm />
         <Employees />
       </Paper>
     </div>

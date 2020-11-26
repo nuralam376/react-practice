@@ -1,3 +1,4 @@
+import ActionButtons from "./ActionButtons";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
 import DatePicker from "./DatePicker";
@@ -12,4 +13,5 @@ export default {
   Checkbox,
   DatePicker,
   Button,
+  ActionButtons,
 };
