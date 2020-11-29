@@ -26,6 +26,13 @@ export function updateEmployees(data) {
   localStorage.setItem(keys.employees, JSON.stringify(employees));
 }
 
+export function deleteEmployee(id) {
+  let employees = getAllEmployees();
+  let employee = employees.findIndex((employee) => employee.id == id);
+  employees.splice(employee, 1);
+  localStorage.setItem(keys.employees, JSON.stringify(employees));
+}
+
 export function generateEmployeeId() {
   if (localStorage.getItem(keys.employees) == null) {
     localStorage.setItem(keys.employeeId, "0");
