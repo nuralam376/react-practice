@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import TextError from "./TextError";
 
@@ -17,10 +17,25 @@ const initialValues = {
   phNumbers: [""],
 };
 
+const savedValues = {
+  name: "Abc",
+  email: "abc@gmail.com",
+  channel: "Abc Channel",
+  comments: "",
+  address: "",
+  social: {
+    facebook: "",
+    twitter: "",
+  },
+  phoneNumbers: ["", ""],
+  phNumbers: [""],
+};
+
 const onSubmit = (values, onSubmitProps) => {
   console.log("Form Values", values);
   console.log("onSubmit Props", onSubmitProps);
   onSubmitProps.setSubmitting(false);
+  onSubmitProps.resetForm();
 };
 
 const validationSchema = yup.object({
@@ -41,11 +56,13 @@ const validateComments = (value) => {
 };
 
 const YoutubeForm = () => {
+  const [formValues, setFormValues] = useState(null);
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={formValues || initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
+      enableReinitialize
       // validateOnChange={false}
       // validateOnBlur={false}
       // validateOnMount
@@ -63,11 +80,9 @@ const YoutubeForm = () => {
               <label htmlFor="email">Email</label>
               <Field type="email" name="email" id="email" />
             </div>
-
             <ErrorMessage name="email">
               {(errorMessage) => <div className="error">{errorMessage}</div>}
             </ErrorMessage>
-
             <div className="form-control">
               <label htmlFor="channel">Channel</label>
               <Field
@@ -78,7 +93,6 @@ const YoutubeForm = () => {
               />
             </div>
             <ErrorMessage name="channel" />
-
             <div className="form-control">
               <label htmlFor="comments">Comments</label>
               <Field
@@ -106,7 +120,6 @@ const YoutubeForm = () => {
                 }}
               </Field>
             </div>
-
             <div className="form-control">
               <label htmlFor="facebook">Facebook Profile</label>
               <Field name="social.facebook" id="facebook" type="text" />
@@ -176,6 +189,9 @@ const YoutubeForm = () => {
               }
             >
               Visit All
+            </button>
+            <button type="button" onClick={() => setFormValues(savedValues)}>
+              Load Values
             </button>
             <button
               type="submit"
