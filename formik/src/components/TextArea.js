@@ -7,7 +7,7 @@ function TextArea(props) {
   return (
     <div className="form-control">
       <label htmlFor={name}>{label}</label>
-      <Field as="textarea" name={name} label={label} />
+      <Field as="textarea" name={name} label={label} {...rest} />
       <ErrorMessage name={name} component={TextError} />
     </div>
   );
