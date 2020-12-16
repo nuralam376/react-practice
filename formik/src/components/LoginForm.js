@@ -12,8 +12,8 @@ function LoginForm() {
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Invalid email address")
-      .required("* This field is required"),
-    password: Yup.string().required("* This field is required"),
+      .required("* Email is required"),
+    password: Yup.string().required("* Password is required"),
   });
 
   const onSubmit = (values) => {
@@ -29,16 +29,10 @@ function LoginForm() {
       {(formik) => {
         return (
           <Form>
+            <FormikControl control="chakrainput" name="email" label="Email" />
             <FormikControl
-              control="input"
-              name="email"
-              label="Email"
-              type="email"
-            />
-            <FormikControl
-              type="text"
+              control="chakrainput"
               name="password"
-              control="input"
               label="Password"
             />
             <button type="submit" disabled={!formik.isValid}>
