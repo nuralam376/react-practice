@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buyCake } from "../redux";
 
@@ -6,6 +6,7 @@ const CakeContainer = (props) => {
   const numOfCakes = useSelector((state) => state.cake.numOfCakes);
   const users = useSelector((state) => state.cake.users);
   const dispatch = useDispatch();
+  const [number, setNumber] = useState(0);
 
   return (
     <>
@@ -14,7 +15,12 @@ const CakeContainer = (props) => {
       {/* <p>Users - {props.users}</p> */}
       <p>{users}</p>
       {/* <button onClick={props.buyCake}>Buy Cake</button> */}
-      <button onClick={() => dispatch(buyCake())}>Buy Cake</button>
+      <input
+        type="text"
+        name="number"
+        onChange={(e) => setNumber(e.target.value)}
+      />
+      <button onClick={() => dispatch(buyCake(number))}>Buy Cake</button>
     </>
   );
 };
@@ -28,7 +34,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    buyCake: () => dispatch(buyCake()),
+    buyCake: (number) => dispatch(buyCake(number)),
   };
 };
 
