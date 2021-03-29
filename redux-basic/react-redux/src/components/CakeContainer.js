@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { buyCake } from "../redux";
+import { buyBiscuits, buyCake } from "../redux";
 
 const CakeContainer = (props) => {
   const numOfCakes = useSelector((state) => state.cake.numOfCakes);
@@ -25,14 +25,28 @@ const CakeContainer = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const itemState = ownProps.cake
+    ? state.cake.numOfCakes
+    : state.biscuit.numOfBiscuits;
+
+  return {
+    item: itemState,
+  };
   return {
     numOfCakes: state.numOfCakes,
     users: state.users,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const dispatchFunction = ownProps.cake
+    ? () => dispatch(buyCake())
+    : () => dispatch(buyBiscuits());
+
+  return {
+    buyCkae: dispatchFunction,
+  };
   return {
     buyCake: (number) => dispatch(buyCake(number)),
   };
