@@ -24,10 +24,30 @@ let domContainer = document.querySelector("#root");
 // const element = "Hello World";
 
 // const element = React.createElement("div", null, "Hello World");
-const element = React.createElement(
-  "div",
-  null,
-  React.createElement("p", null, "Hello World")
-);
+// const element = React.createElement(
+//   "div",
+//   null,
+//   React.createElement("p", null, "Hello World")
+// );
 
-ReactDOM.render(element, domContainer);
+const Increment = () => {
+  const [counter, setCounter] = React.useState(0);
+
+  return (
+    <div>
+      <h1 id="display">Counter - {counter}</h1>
+      <button id="button" onClick={() => setCounter(counter + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+};
+
+ReactDOM.render(
+  <div>
+    <Increment />
+    <Increment />
+    <Increment />
+  </div>,
+  domContainer
+);
