@@ -16,6 +16,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Clock from './components/Clock';
 
 // function getGreeting(greet) {
 //     return `Hello ${greet}`;
@@ -34,15 +35,22 @@ import ReactDOM from 'react-dom';
 // function Clock({ locale }) {
 //     return <h1>{new Date().toLocaleTimeString(locale)}</h1>;
 // }
-class Clock extends React.PureComponent {
-    render() {
-        const { locale, children } = this.props;
-        return (
-            <h1>
-                {new Date().toLocaleTimeString(locale)} - {children}
-            </h1>
-        );
-    }
-}
+// class Clock extends React.PureComponent {
+//     render() {
+//         const { locale, children } = this.props;
+//         return (
+//             <h1>
+//                 {new Date().toLocaleTimeString(locale)} - {children}
+//             </h1>
+//         );
+//     }
+// }
 
-ReactDOM.render(<Clock locale="bn-bd">Testing children</Clock>, document.getElementById('root'));
+// ReactDOM.render(<Clock locale="bn-bd">Testing children</Clock>, document.getElementById('root'));
+
+ReactDOM.render(
+    <>
+        <Clock />
+    </>,
+    document.getElementById('root')
+);
