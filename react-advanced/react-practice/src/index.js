@@ -25,8 +25,24 @@ import ReactDOM from 'react-dom';
 
 // ReactDOM.render(element, document.getElementById('root'));
 
-setInterval(() => {
-    const element = <h1>{new Date().toLocaleTimeString()}</h1>;
+// setInterval(() => {
+//     const element = <h1>{new Date().toLocaleTimeString()}</h1>;
 
-    ReactDOM.render(element, document.getElementById('root'));
-}, 1000);
+//     ReactDOM.render(element, document.getElementById('root'));
+// }, 1000);
+
+// function Clock({ locale }) {
+//     return <h1>{new Date().toLocaleTimeString(locale)}</h1>;
+// }
+class Clock extends React.PureComponent {
+    render() {
+        const { locale, children } = this.props;
+        return (
+            <h1>
+                {new Date().toLocaleTimeString(locale)} - {children}
+            </h1>
+        );
+    }
+}
+
+ReactDOM.render(<Clock locale="bn-bd">Testing children</Clock>, document.getElementById('root'));
