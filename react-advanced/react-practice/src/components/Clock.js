@@ -1,14 +1,17 @@
 import React, { PureComponent } from 'react';
+import Button from './Button';
 
 class Clock extends PureComponent {
     state = {
         date: new Date().toLocaleTimeString(),
+        locale: 'bn-bd',
     };
     // constructor(props) {
     //     super(props);
     //     this.state = {
     //         date: new Date().toLocaleTimeString(),
     //     };
+    //  this.handleClick = this.handleClick.bind(this)
     // }
 
     componentDidMount() {
@@ -19,15 +22,28 @@ class Clock extends PureComponent {
         clearInterval(this.clearTimer);
     }
 
-    tick() {
+    handleClick = (locale) => {
         this.setState({
-            date: new Date().toLocaleTimeString(),
+            locale,
+        });
+    };
+
+    tick() {
+        const { locale } = this.state;
+        this.setState({
+            date: new Date().toLocaleTimeString(locale),
         });
     }
 
     render() {
-        const { date } = this.state;
-        return <h1>{date}</h1>;
+        console.log('Clock Component');
+        const { date, locale } = this.state;
+        return (
+            <>
+                <h1>{date}</h1>
+                <Button change={this.handleClick} locale={locale} />
+            </>
+        );
     }
 }
 
