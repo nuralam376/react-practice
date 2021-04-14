@@ -23,6 +23,7 @@ class Clock extends PureComponent {
     }
 
     handleClick = (locale) => {
+        console.log('Locale', locale);
         this.setState({
             locale,
         });
@@ -36,12 +37,35 @@ class Clock extends PureComponent {
     }
 
     render() {
-        console.log('Clock Component');
         const { date, locale } = this.state;
+        let button;
+        console.log('Locale2', locale);
+        if (locale === 'bn-bd') {
+            button = (
+                <Button type="button" change={this.handleClick} locale="en-US">
+                    Change to bd
+                </Button>
+            );
+        } else {
+            button = (
+                <Button type="button" change={this.handleClick} locale="bn-bd">
+                    Change to eng
+                </Button>
+            );
+        }
+        const todos = [1, 2, 3];
         return (
             <>
                 <h1>{date}</h1>
-                <Button change={this.handleClick} locale={locale} />
+                {button}
+                {locale === 'bn-bd' ? (
+                    <Button change={this.handleClick} locale="en-us" show={false} enable />
+                ) : (
+                    <Button change={this.handleClick} locale="bn-bd" show enable={false} />
+                )}
+                {todos.map((td) => (
+                    <Button key={td} change={this.handleClick} locale="bn-bd" enable />
+                ))}
             </>
         );
     }
