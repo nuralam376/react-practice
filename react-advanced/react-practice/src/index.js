@@ -16,7 +16,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Clock from './components/Clock';
+import App from './App';
 
 // function getGreeting(greet) {
 //     return `Hello ${greet}`;
@@ -50,7 +50,8 @@ import Clock from './components/Clock';
 
 ReactDOM.render(
     <>
-        <Clock />
+        {/* <Clock /> */}
+        <App />
     </>,
     document.getElementById('root')
 );
