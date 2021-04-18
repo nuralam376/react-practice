@@ -3,16 +3,27 @@ import React, { PureComponent } from 'react';
 class Form extends PureComponent {
     state = {
         name: 'JS',
+        text: 'JavaScript',
     };
 
     handleChange = (e) => {
+        // if (e.target.type === 'text')
+        //     this.setState({
+        //         name: e.target.value,
+        //     });
+
+        // if (e.target.type === 'textarea')
+        //     this.setState({
+        //         text: e.target.value,
+        //     });
+
         this.setState({
-            name: e.target.value,
+            [e.target.name]: e.target.value,
         });
     };
 
     render() {
-        const { name } = this.state;
+        const { name, text } = this.state;
         return (
             <div>
                 <h1>Form</h1>
@@ -22,6 +33,16 @@ class Form extends PureComponent {
                         name="name"
                         placeholder="Name"
                         value={name}
+                        onChange={this.handleChange}
+                    />
+                    <br />
+                    <br />
+                    <textarea
+                        name="text"
+                        id=""
+                        cols="30"
+                        rows="10"
+                        value={text}
                         onChange={this.handleChange}
                     />
                 </form>
