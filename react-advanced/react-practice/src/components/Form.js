@@ -4,6 +4,7 @@ class Form extends PureComponent {
     state = {
         name: 'JS',
         text: 'JavaScript',
+        library: 'react',
     };
 
     handleChange = (e) => {
@@ -23,7 +24,7 @@ class Form extends PureComponent {
     };
 
     render() {
-        const { name, text } = this.state;
+        const { name, text, library } = this.state;
         return (
             <div>
                 <h1>Form</h1>
@@ -45,8 +46,22 @@ class Form extends PureComponent {
                         value={text}
                         onChange={this.handleChange}
                     />
+
+                    <br />
+                    <br />
+
+                    <select
+                        name="library"
+                        id="library"
+                        value={library}
+                        onChange={this.handleChange}
+                    >
+                        <option value="react">React</option>
+                        <option value="vue">Vue</option>
+                    </select>
                 </form>
                 <p>{name}</p>
+                <p>{library}</p>
             </div>
         );
     }
