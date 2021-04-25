@@ -17,6 +17,7 @@
     "jest": true
   },
   "rules": {
+    "import/no-named-as-default": 0,
     "jsx-a11y/no-onchange": 0,
     "react/jsx-no-bind": 0,
     "react/react-in-jsx-scope": 0,
