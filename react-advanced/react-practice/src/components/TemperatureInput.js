@@ -1,28 +1,23 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
-export class TemperatureInput extends PureComponent {
-    // state = {
-    //     temperature: '',
-    // };
+const scaleNames = {
+    c: 'Celsius',
+    f: 'Farenheit',
+};
 
-    // onTemperatureChange = (e) => {
-    //     const {celcius} = this.props;
-    //     this.setState({
-    //         this.props.celcius: e.target.value,
-    //     });
-    // };
-
-    render() {
-        const { celcius, onTemperatureInputChange } = this.props;
-        return (
-            <div>
-                <fieldset>
-                    <legend>Temperature</legend>
-                    <input type="text" value={celcius} onChange={onTemperatureInputChange} />
-                </fieldset>
-            </div>
-        );
-    }
+export function TemperatureInput({ scale, temperature, onTemperatureInputChange }) {
+    return (
+        <div>
+            <fieldset>
+                <legend>Temperature in {scaleNames[scale]}</legend>
+                <input
+                    type="text"
+                    value={temperature}
+                    onChange={(e) => onTemperatureInputChange(e, scale)}
+                />
+            </fieldset>
+        </div>
+    );
 }
 
 export default TemperatureInput;

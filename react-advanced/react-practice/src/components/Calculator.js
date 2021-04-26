@@ -4,28 +4,32 @@ import TemperatureInput from './TemperatureInput';
 
 export default class Calculator extends React.PureComponent {
     state = {
-        celcius: 0,
+        scale: 'c',
+        temperature: '',
     };
 
-    onTemperatureInputChange = (e) => {
+    onTemperatureInputChange = (e, scale) => {
         this.setState({
-            celcius: e.target.value,
+            temperature: e.target.value,
+            scale,
         });
     };
 
     render() {
-        const { celcius } = this.state;
+        const { temperature, scale } = this.state;
         return (
             <>
                 <TemperatureInput
-                    celcius={celcius}
+                    temperature={temperature}
+                    scale={scale}
                     onTemperatureInputChange={this.onTemperatureInputChange}
                 />
                 <TemperatureInput
-                    celcius={celcius}
+                    temperature={temperature}
                     onTemperatureInputChange={this.onTemperatureInputChange}
+                    scale={scale}
                 />
-                <BuildingVerdict celcius={celcius} />
+                <BuildingVerdict temperature={temperature} />
             </>
         );
     }
