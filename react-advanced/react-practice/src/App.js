@@ -1,11 +1,11 @@
 import './App.css';
-import Calculator from './components/Calculator';
+import Text from './components/Text';
 
 function App() {
     return (
         <div className="App">
             {/* <Form /> */}
-            <Calculator />
+            <Text />
         </div>
     );
 }
