@@ -1,11 +1,15 @@
 import React from 'react';
 
-export default class Emoji extends React.Component {
+class Emoji extends React.PureComponent {
     addEmoji = (text, emoji) => `${emoji} ${text} ${emoji}`;
 
     render(override) {
-        let text = 'JavaScript';
+        let text = 'Hello JavaScript';
+
         if (override) text = override;
-        return `${text}`;
+
+        return <h1>{text}</h1>;
     }
 }
+
+export default Emoji;

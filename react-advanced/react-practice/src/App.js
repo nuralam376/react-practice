@@ -1,10 +1,9 @@
 import './App.css';
-import Text from './components/Text';
+import Text from './components/inheritance/Text';
 
 function App() {
     return (
         <div className="App">
-            {/* <Form /> */}
             <Text />
         </div>
     );
