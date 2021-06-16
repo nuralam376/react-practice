@@ -7,11 +7,24 @@ import Section from './components/Render/Section';
 
 class App extends React.PureComponent {
     state = {
+        // eslint-disable-next-line react/no-unused-state
         theme: 'dark',
+        // eslint-disable-next-line react/no-unused-state
+        switchTheme: () => {
+            this.setState((theme) => {
+                if (theme.theme === 'dark') {
+                    return {
+                        theme: 'light',
+                    };
+                }
+                return {
+                    theme: 'dark',
+                };
+            });
+        },
     };
 
     render() {
-        const { theme } = this.state;
         return (
             <div className="App">
                 {/* <ClickedCounter /> */}
@@ -22,7 +35,7 @@ class App extends React.PureComponent {
                         <ClickedCounter count={count} incrementCount={incrementCount} />
                     )}
                 />
-                <ThemeContext.Provider value={theme}>
+                <ThemeContext.Provider value={this.state}>
                     <Section />
                 </ThemeContext.Provider>
             </div>
