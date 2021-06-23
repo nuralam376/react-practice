@@ -16,7 +16,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+// import App from './App';
 
 // function getGreeting(greet) {
 //     return `Hello ${greet}`;
@@ -47,11 +47,58 @@ import App from './App';
 // }
 
 // ReactDOM.render(<Clock locale="bn-bd">Testing children</Clock>, document.getElementById('root'));
+const states = [];
+let stateIndex = -1;
 
-ReactDOM.render(
-    <>
-        {/* <Clock /> */}
-        <App />
-    </>,
-    document.getElementById('root')
-);
+function useState(defaultValue) {
+    // eslint-disable-next-line no-plusplus
+    const index = ++stateIndex;
+
+    // eslint-disable-next-line no-use-before-define
+    if (states[index]) return states[index];
+
+    const setValue = (newValue) => {
+        states[index][0] = newValue;
+        // eslint-disable-next-line no-use-before-define
+        renderAgain();
+    };
+
+    const returnArray = [defaultValue, setValue];
+    states[index] = returnArray;
+    return returnArray;
+}
+
+const App = () => {
+    const [todo, setTodo] = useState('');
+    const [warning, setWarning] = useState(null);
+
+    const handleInput = (e) => {
+        const inputValue = e.target.value;
+        let updatedWarning = '';
+        if (inputValue.includes('.js')) {
+            updatedWarning = 'Do you know JS?';
+        }
+        setTodo(inputValue);
+        setWarning(updatedWarning);
+    };
+
+    return (
+        <div>
+            <textarea name="todo" id="" cols="30" rows="10" onChange={handleInput} />
+            <h4>{warning || todo}</h4>
+        </div>
+    );
+};
+
+function renderAgain() {
+    stateIndex = -1;
+    ReactDOM.render(
+        <>
+            {/* <Clock /> */}
+            <App />
+        </>,
+        document.getElementById('root')
+    );
+}
+
+renderAgain();
