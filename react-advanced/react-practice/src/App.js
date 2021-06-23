@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Counter from './components/Hooks/Counter';
 import Todo from './components/Hooks/Todo';
 import TodoClass from './components/Hooks/TodoClass';
 
@@ -46,6 +47,7 @@ function App() {
         <div>
             <TodoClass />
             <Todo />
+            <Counter />
         </div>
     );
 }
