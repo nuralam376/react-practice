@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import Counter from './components/Hooks/Counter';
-import Todo from './components/Hooks/Todo';
-import TodoClass from './components/Hooks/TodoClass';
+// import DateClass from './components/Hooks/useEffect/DateClass';
+import DateFunction from './components/Hooks/useEffect/DateFunction';
 
 // class App extends React.PureComponent {
 //     state = {
@@ -43,11 +42,17 @@ import TodoClass from './components/Hooks/TodoClass';
 // }
 
 function App() {
+    const [show, setShow] = useState(true);
     return (
         <div>
-            <TodoClass />
+            {/* <TodoClass />
             <Todo />
-            <Counter />
+            <Counter /> */}
+            {/* <DateClass /> */}
+            {show && <DateFunction />}
+            <button type="button" onClick={() => setShow((prevShow) => !prevShow)}>
+                {show ? 'Hide' : 'Show'}
+            </button>
         </div>
     );
 }
