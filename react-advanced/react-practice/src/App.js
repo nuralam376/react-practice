@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import UseMemo from './components/Hooks/UseMemo';
+import Time from './components/Hooks/useRef/Time';
 
 // class App extends React.PureComponent {
 //     state = {
@@ -52,7 +52,9 @@ function App() {
             <button type="button" onClick={() => setShow((prevShow) => !prevShow)}>
                 {show ? 'Hide' : 'Show'}
             </button> */}
-            <UseMemo />
+            {/* <UseMemo /> */}
+            {/* <Form /> */}
+            <Time />
         </div>
     );
 }
