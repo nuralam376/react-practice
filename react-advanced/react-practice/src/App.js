@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Time from './components/Hooks/useRef/Time';
+import Counter from './components/Hooks/useReducer/Counter';
 
 // class App extends React.PureComponent {
 //     state = {
@@ -54,7 +54,8 @@ function App() {
             </button> */}
             {/* <UseMemo /> */}
             {/* <Form /> */}
-            <Time />
+            {/* <Time /> */}
+            <Counter />
         </div>
     );
 }
