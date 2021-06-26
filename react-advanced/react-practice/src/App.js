@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-// import DateClass from './components/Hooks/useEffect/DateClass';
-import DateFunction from './components/Hooks/useEffect/DateFunction';
+import UseMemo from './components/Hooks/UseMemo';
 
 // class App extends React.PureComponent {
 //     state = {
@@ -42,17 +41,18 @@ import DateFunction from './components/Hooks/useEffect/DateFunction';
 // }
 
 function App() {
-    const [show, setShow] = useState(true);
+    // const [show, setShow] = useState(true);
     return (
         <div>
             {/* <TodoClass />
             <Todo />
             <Counter /> */}
             {/* <DateClass /> */}
-            {show && <DateFunction />}
+            {/* {show && <DateFunction />}
             <button type="button" onClick={() => setShow((prevShow) => !prevShow)}>
                 {show ? 'Hide' : 'Show'}
-            </button>
+            </button> */}
+            <UseMemo />
         </div>
     );
 }
