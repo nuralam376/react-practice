@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import LayoutComponentB from './components/Hooks/CustomerHook/LayoutComponentB';
+import Logo from './Styles/Logo';
 
 // class App extends React.PureComponent {
 //     state = {
@@ -59,7 +59,8 @@ function App() {
             {/* <CounterThree /> */}
             {/* <ComponentA /> */}
             {/* <GetPost2 /> */}
-            <LayoutComponentB />
+            {/* <LayoutComponentB /> */}
+            <Logo />
         </div>
     );
 }
