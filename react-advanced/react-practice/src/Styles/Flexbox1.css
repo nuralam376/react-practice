@@ -1,0 +1,23 @@
+.item {
+  width: 250px;
+  background-color: red;
+  padding: 0.5rem;
+  margin: 1rem 0.5rem 2rem;
+  flex-shrink: 1;
+}
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+}
+
+.one {
+  order: 1;
+  flex-basis: 100%;
+}
+
+.three {
+  order: 2;
+  flex: 1 0 50%;
+}
