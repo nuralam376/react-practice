@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import FlexbBox2 from './Styles/FlexBox2';
+import Grid from './components/Grid/Grid';
 // class App extends React.PureComponent {
 //     state = {
 //         // eslint-disable-next-line react/no-unused-state
@@ -60,7 +60,8 @@ function App() {
             {/* <GetPost2 /> */}
             {/* <LayoutComponentB /> */}
             {/* <Logo /> */}
-            <FlexbBox2 />
+            {/* <FlexbBox2 /> */}
+            <Grid />
         </div>
     );
 }
