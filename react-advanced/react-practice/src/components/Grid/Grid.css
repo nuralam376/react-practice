@@ -33,12 +33,15 @@
   grid-area: m;
 } */
 
-.container {
+/* .container {
   display: grid;
   height: 100vh;
   grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-auto-rows: 100px;
+  grid-gap: 2px;
+  justify-content: center;
+  align-content: center;
 }
 
 .container div:nth-child(even) {
@@ -47,4 +50,36 @@
 
 .container div:nth-child(odd) {
   background-color: green;
+}
+
+.seven {
+  justify-self: center;
+  align-self: center;
+} */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: repeat(auto-fit, 1fr);
+  grid-gap: 5px;
+  grid-auto-flow: dense;
+}
+
+.container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.horizontal {
+  grid-column: auto / span 2;
+}
+
+.vertical {
+  grid-row: auto / span 2;
+}
+
+.big {
+  grid-column: auto / span 2;
+  grid-row: auto / span 2;
 }
