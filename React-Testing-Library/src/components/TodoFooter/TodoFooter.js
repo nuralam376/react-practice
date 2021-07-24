@@ -1,6 +1,6 @@
 import React from 'react'
-import "./TodoFooter.css"
 import { Link } from "react-router-dom"
+import "./TodoFooter.css"
 
 function TodoFooter({
     numberOfIncompleteTasks
