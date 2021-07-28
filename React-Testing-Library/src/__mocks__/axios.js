@@ -19,5 +19,5 @@ const mockResponse = {
 
 
 export default {
-    get: jest.fn().mockResolvedValue(mockResponse)
-}
+    get : jest.fn().mockResolvedValue(mockResponse)
+};
