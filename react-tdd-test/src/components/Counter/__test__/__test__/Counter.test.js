@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Counter from "../Counter";
 
 test("should render header text", () => {
@@ -31,3 +31,18 @@ test("should show add btn", () => {
     const addBtn = screen.getByTestId("add-btn");
     expect(addBtn.textContent).toBe("+");
 });
+
+test("change value of input works correctly", () => {
+    render(<Counter />);
+    const inputEl = screen.getByTestId("input");
+
+    expect(inputEl.value).toBe("1");
+
+    fireEvent.change(inputEl, {
+        target : {
+            value : "5"
+        }
+    });
+
+    expect(inputEl.value).toBe("5");
+})

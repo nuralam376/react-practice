@@ -9,7 +9,7 @@ function Counter() {
             <h1 data-testid = "header">Counter</h1>
             <h2 data-testid = "counter">{counter}</h2>
             <button data-testid = "subtract-btn">-</button>
-            <input type="number" data-testid = "input" value = {inputValue}/>
+            <input type="number" data-testid = "input" value = {inputValue} onChange = {e => setInputValue(+e.target.value)}/>
             <button data-testid = "add-btn">+</button>
         </div>
     )
